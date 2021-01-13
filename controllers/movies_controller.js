@@ -11,7 +11,7 @@ movies.get('/', (req, res) => {
 })
 
 movies.post('/', (req,res) => {
-  Movie.create(req.body, (err, createdBird) => {
+  Movie.create(req.body, (err, createdMovie) => {
     Movie.find({}, (err, foundMovies) => {
     res.json(foundMovies)
     })
@@ -22,7 +22,7 @@ movies.post('/', (req,res) => {
 movies.put('/:id', (req, res) => {
   Movie.findByIdAndUpdate(
     req.params.id, req.body, {new: true},
-    (err, updatedBird) => {
+    (err, updatedMovie) => {
       if (err) {
         res.send(err)
       }else {
@@ -35,7 +35,7 @@ movies.put('/:id', (req, res) => {
 })
 
 movies.delete('/:id', (req, res) => {
-  Movie.findByIdAndRemove(req.params.id, (err, deletedBird) => {
+  Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
     Movie.find({}, (err, foundMovies) => {
       res.json(foundMovies)
     })

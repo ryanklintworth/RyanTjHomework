@@ -5,9 +5,10 @@ const Movie = require('../models/movies.js');
 
 
 movies.get('/', (req, res) => {
-  Movie.find({}, (err, foundMovies) => {
-    res.json(foundMovies)
-  })
+  res.send('this')
+  // Movie.find({}, (err, foundMovies) => {
+  //   res.json(foundMovies)
+  // })
 })
 
 movies.post('/', (req,res) => {

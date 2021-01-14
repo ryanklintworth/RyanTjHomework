@@ -95,16 +95,13 @@ class App extends React.Component {
             value={this.state.rated}/><br/>
           <input type="submit"/>
         </form>
-<<<<<<< HEAD
-        <h1>Star Wars Titles</h1>
-=======
 
         <h1>List of Star Wars Movies</h1>
           <ul>
           { this.state.movies.map((movie) => {
             return (
-              <li>
-              {movie.name}
+              <li key={movie._id}>
+              <p>{movie.name}</p>
               <img src={movie.image} alt={movie.name}/>
                 <button value={movie._id} onClick={this.deleteMovie}>WATCHED</button>
               <details>
@@ -144,7 +141,6 @@ class App extends React.Component {
             )
           })}
         </ul>
->>>>>>> daad79a549839fceaeafa4e4f15b0191ac9713b8
       </div>
     )
   }

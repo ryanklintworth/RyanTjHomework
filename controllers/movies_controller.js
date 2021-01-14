@@ -15,7 +15,6 @@ movies.post('/', (req,res) => {
     Movie.find({}, (err, foundMovies) => {
     res.json(foundMovies)
     })
-
   })
 })
 

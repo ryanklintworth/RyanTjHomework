@@ -27,6 +27,15 @@ class App extends React.Component {
     )
   }
 
+  deleteMovie = (event) => {
+    axios.delete('/movies/' + event.target.value)
+    .then((response) => {
+      this.setState({
+        movies: response.data
+      })
+    })
+  }
+
   updatedMovie = (event) => {
     event.preventDefault()
     const id = event.target.id
@@ -64,21 +73,21 @@ class App extends React.Component {
             onChange={this.handleChange}
             value={this.state.name}/><br/>
 
-          <label htmlFor="name">Image</label><br/>
+          <label htmlFor="image">Image</label><br/>
           <input
             type="text"
             id="image"
             onChange={this.handleChange}
             value={this.state.image}/><br/>
 
-          <label htmlFor="name">Date</label><br/>
+          <label htmlFor="date">Date</label><br/>
           <input
             type="text"
             id="date"
             onChange={this.handleChange}
             value={this.state.date}/><br/>
 
-          <label htmlFor="name">Rated</label><br/>
+          <label htmlFor="rated">Rated</label><br/>
           <input
             type="text"
             id="rated"
@@ -93,8 +102,8 @@ class App extends React.Component {
             return (
               <li>
               {movie.name}
-              <img src={movie.name} alt={movie.name}/>
-                <button value={movie._id} onClick={this.deletedMovie}>WATCHED</button>
+              <img src={movie.image} alt={movie.name}/>
+                <button value={movie._id} onClick={this.deleteMovie}>WATCHED</button>
               <details>
               <summary>Edit this Movie</summary>
               <form id={movie._id} onSubmit={this.updateMovie}>
@@ -103,28 +112,28 @@ class App extends React.Component {
                 type="text"
                 id="name"
                 onChange={this.handleChange}
-                value={this.state.name}/><br/>
+                /><br/>
 
-              <label htmlFor="name">Image</label><br/>
+              <label htmlFor="image">Image</label><br/>
               <input
                 type="text"
                 id="image"
                 onChange={this.handleChange}
-                value={this.state.image}/><br/>
+                /><br/>
 
-              <label htmlFor="name">Date</label><br/>
+              <label htmlFor="date">Date</label><br/>
               <input
                 type="text"
                 id="date"
                 onChange={this.handleChange}
-                value={this.state.date}/><br/>
+                /><br/>
 
-              <label htmlFor="name">Rated</label><br/>
+              <label htmlFor="rated">Rated</label><br/>
               <input
                 type="text"
                 id="rated"
                 onChange={this.handleChange}
-                value={this.state.rated}/><br/>
+                /><br/>
               <input type="submit"/>
               </form>
               </details>

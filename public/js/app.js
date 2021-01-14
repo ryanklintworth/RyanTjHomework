@@ -84,9 +84,54 @@ class App extends React.Component {
             id="rated"
             onChange={this.handleChange}
             value={this.state.rated}/><br/>
-
           <input type="submit"/>
         </form>
+
+        <h1>List of Star Wars Movies</h1>
+          <ul>
+          { this.state.movies.map((movie) => {
+            return (
+              <li>
+              {movie.name}
+              <img src={movie.name} alt={movie.name}/>
+                <button value={movie._id} onClick={this.deletedMovie}>WATCHED</button>
+              <details>
+              <summary>Edit this Movie</summary>
+              <form id={movie._id} onSubmit={this.updateMovie}>
+              <label htmlFor="name">Name</label><br/>
+              <input
+                type="text"
+                id="name"
+                onChange={this.handleChange}
+                value={this.state.name}/><br/>
+
+              <label htmlFor="name">Image</label><br/>
+              <input
+                type="text"
+                id="image"
+                onChange={this.handleChange}
+                value={this.state.image}/><br/>
+
+              <label htmlFor="name">Date</label><br/>
+              <input
+                type="text"
+                id="date"
+                onChange={this.handleChange}
+                value={this.state.date}/><br/>
+
+              <label htmlFor="name">Rated</label><br/>
+              <input
+                type="text"
+                id="rated"
+                onChange={this.handleChange}
+                value={this.state.rated}/><br/>
+              <input type="submit"/>
+              </form>
+              </details>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
